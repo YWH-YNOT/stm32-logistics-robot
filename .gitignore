@@ -1,0 +1,17 @@
+.vscode/
+.idea/
+Objects/
+Listings/
+Debug/
+Release/
+firmware/MDK-ARM/GX_01/
+firmware/MDK-ARM/GX_02/
+*.uvguix.*
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.o
+*.d
+*.log

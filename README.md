@@ -1,6 +1,8 @@
-# STM32F407 物流搬运机器人
+# 基于 STM32F407 的工训物流搬运机器人
 
-2025 年工程训练项目归档。当前仓库保留机器人控制工程压缩包，核心方向是多串口通信、闭环步进电机与舵机执行器控制。
+2025 年工程训练项目归档，核心方向是多串口通信、闭环步进电机与舵机执行器控制。原始压缩包已经展开到 `firmware/`，可直接浏览源码和工程配置。
+
+![工训物流搬运机器人](assets/robot.jpg)
 
 ## 项目定位
 
@@ -26,22 +28,22 @@ FIFO / 命令解析
 
 ## 工程说明
 
-源码目前以 `GX_02.zip` 归档，解压后的主要模块包括：
+源码位于 `firmware/`，主要模块包括：
 
 | 模块 | 作用 |
 | --- | --- |
-| `Emm_V5` | 闭环步进驱动器协议 |
-| `motor_control` | 多电机地址、位置/速度与同步控制 |
-| `derives_servo` | 舵机角度状态机 |
-| `instruct` | 回零触发与结果轮询 |
-| `fifo` | 串口数据缓存 |
-| `Core/Src/main.c` | 当前联调入口 |
+| `firmware/Emm_V5` | 闭环步进驱动器协议 |
+| `firmware/motor_control` | 多电机地址、位置/速度与同步控制 |
+| `firmware/derives_servo` | 舵机角度状态机 |
+| `firmware/instruct` | 回零触发与结果轮询 |
+| `firmware/fifo` | 串口数据缓存 |
+| `firmware/Core/Src/main.c` | 当前联调入口 |
 
 ## 复现建议
 
-1. 解压 `GX_02.zip`；
-2. 使用 STM32CubeMX 检查 `.ioc` 中的时钟、UART、DMA 与 TIM 配置；
-3. 使用 Keil MDK 打开工程并确认 STM32F407 目标器件；
+1. 使用 STM32CubeMX 打开 `firmware/GX_02.ioc`；
+2. 检查时钟、UART、DMA 与 TIM 配置；
+3. 使用 Keil MDK 打开 `firmware/MDK-ARM/` 中的工程并确认 STM32F407 目标器件；
 4. 在连接真实执行器前先核对电机地址、方向、脉冲比例、限位和急停；
 5. 先分别验证使能、回零、点动和舵机安全角度，再组合完整搬运流程。
 
